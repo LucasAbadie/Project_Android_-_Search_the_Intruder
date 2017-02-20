@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lucasabadie.projetandroidtp.GameFragment">
+    tools:context="fr.lucasabadie.SearchTheIntruder.GameFragment">
 
-    <com.example.lucasabadie.projetandroidtp.CustomView
+    <fr.lucasabadie.SearchTheIntruder.CustomView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/CustomView"/>

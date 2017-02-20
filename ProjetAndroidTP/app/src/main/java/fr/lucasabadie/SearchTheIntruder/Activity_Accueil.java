@@ -1,4 +1,4 @@
-package com.example.lucasabadie.projetandroidtp;
+package fr.lucasabadie.SearchTheIntruder;
 
 
 import android.content.DialogInterface;
@@ -25,7 +25,25 @@ public class Activity_Accueil extends AppCompatActivity {
         findViewById(R.id.btnRules).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(Activity_Accueil.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Activity_Accueil.this);
+            builder.setCancelable(false);
+            builder.setTitle("Welcome in Search the intruder");
+            builder.setMessage("Just tap on Let's play, configure the game as you want, put the item, the color, the number of items and the speed, and switch to the game screen ! Enjoy ! ;)")
+                    .setPositiveButton("I understand !", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    });
+            // Create the AlertDialog object and return it
+            builder.create();
+
+            builder.show();
+            }
+        });
+
+        findViewById(R.id.btnScore).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(Activity_Accueil.this);
                 builder.setCancelable(false);
                 builder.setTitle("Welcome in Search the intruder");
                 builder.setMessage("Just tap on Let's play, configure the game as you want, put the item, the color, the number of items and the speed, and switch to the game screen ! Enjoy ! ;)")
@@ -36,7 +54,12 @@ public class Activity_Accueil extends AppCompatActivity {
                 // Create the AlertDialog object and return it
                 builder.create();
 
-                builder.show();
+                builder.show();*/
+
+                Intent i = new Intent(Activity_Accueil.this, Activity_Score.class);
+                startActivity(i);
+
+                finish();
             }
         });
 

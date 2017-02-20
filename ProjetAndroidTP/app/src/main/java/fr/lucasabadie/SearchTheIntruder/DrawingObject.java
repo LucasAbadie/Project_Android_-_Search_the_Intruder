@@ -1,4 +1,4 @@
-package com.example.lucasabadie.projetandroidtp;
+package fr.lucasabadie.SearchTheIntruder;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

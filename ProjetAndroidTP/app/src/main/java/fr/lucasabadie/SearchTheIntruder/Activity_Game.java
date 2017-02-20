@@ -1,5 +1,8 @@
-package com.example.lucasabadie.projetandroidtp;
+package fr.lucasabadie.SearchTheIntruder;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,11 +12,16 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
+import java.util.Date;
 
 public class Activity_Game extends AppCompatActivity implements SelectorFragment.OnActionListener {
 
     ViewPager mViewPager;
     ExamplePagerAdapter mExamplePagerAdapter;
+
+    private SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +33,8 @@ public class Activity_Game extends AppCompatActivity implements SelectorFragment
 
         //Remove title bar
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        pref = getApplicationContext().getSharedPreferences("td4", Context.MODE_PRIVATE);
 
         mExamplePagerAdapter = new ExamplePagerAdapter(getSupportFragmentManager());
 
@@ -66,6 +76,18 @@ public class Activity_Game extends AppCompatActivity implements SelectorFragment
                         // When swiping between pages, select the
                         // corresponding tab.
                         getSupportActionBar().setSelectedNavigationItem(position);
+
+                        Log.d("test","change : "+mViewPager.getCurrentItem());
+
+                        if( mViewPager.getCurrentItem() == 1 ) {
+                            Log.d("test","change page");
+
+                            SharedPreferences.Editor editor = pref.edit();
+
+                            editor.putLong("timestart", new Date().getTime());
+
+                            editor.commit();
+                        }
                     }
                 });
 
@@ -79,6 +101,13 @@ public class Activity_Game extends AppCompatActivity implements SelectorFragment
         ((GameFragment)mExamplePagerAdapter.getItem(1)).changerSpeed(speed);
 
         ((GameFragment)mExamplePagerAdapter.getItem(1)).Game();
+    }
+
+    public void onBackPressed(){
+        Intent i = new Intent(Activity_Game.this, Activity_Accueil.class);
+        startActivity(i);
+
+        finish();
     }
 }
 

@@ -1,4 +1,4 @@
-package com.example.lucasabadie.projetandroidtp;
+package fr.lucasabadie.SearchTheIntruder;
 
 
 import android.content.res.Resources;
@@ -64,6 +64,7 @@ public class GameFragment extends Fragment {
 
             return v;
         }
+
 
     //endregion
 
